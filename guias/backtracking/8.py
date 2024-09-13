@@ -12,8 +12,8 @@ def hay_isomorfismo(g1, g2):
         return sum(1 for _ in grafo.adyacentes(v))
 
     V = len(g1)
-    grados_g1 = {v: grado(v) for v in g1}
-    grados_g2 = {v: grado(v) for v in g2}
+    grados_g1 = {v: grado(g1, v) for v in g1}
+    grados_g2 = {v: grado(g2, v) for v in g2}
 
     # Chequear la distribucion de grados
     if Counter(grados_g1.values()) != Counter(grados_g2.values()):

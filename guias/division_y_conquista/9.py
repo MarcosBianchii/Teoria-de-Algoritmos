@@ -5,6 +5,7 @@
 # [1, 2, 3, 1, 1, 1] -> true
 # [1]                -> true
 
+
 def mas_de_la_mitad(arr):
     """
     T(n) = aT(n/b) + O(n^c)
@@ -23,21 +24,23 @@ def mas_de_la_mitad(arr):
 
         return count
 
-    def numero_que_mas_aparece(a, b):
+    def mas_de_la_mitad_rec(a, b):
         if b - a == 1:
-            return arr[a], 1
+            return arr[a]
 
         mid = (a + b) // 2
-        nl, cl = numero_que_mas_aparece(a, mid)
-        nr, cr = numero_que_mas_aparece(mid, b)
+        izq = mas_de_la_mitad_rec(a, mid)
+        der = mas_de_la_mitad_rec(mid, b)
 
-        cr += contar_numero_en_intervalo(nr, a, mid)
-        cl += contar_numero_en_intervalo(nl, mid, b)
+        izq = contar_numero_en_intervalo(izq, a, mid)
+        der = contar_numero_en_intervalo(der, mid, b)
+        mitad_largo = (b - a) / 2
 
-        if cl > cr:
-            return nl, cl
-        else:
-            return nr, cr
+        if izq > mitad_largo:
+            return izq
+        if der > mitad_largo:
+            return der
 
-    _, apariciones = numero_que_mas_aparece(0, len(arr))
-    return apariciones > len(arr) / 2
+        return None
+
+    return mas_de_la_mitad_rec(0, len(arr)) != None
