@@ -46,9 +46,3 @@ def merge_sort(arr):
 
     split(0, len(arr))
     return arr
-
-
-if __name__ == "__main__":
-    arr = [3, 5, 4, 2, 1]
-    merge_sort(arr)
-    print(arr)

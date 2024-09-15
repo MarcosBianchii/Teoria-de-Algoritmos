@@ -1,4 +1,4 @@
-# (★★★) Dado un arreglo de n enteros(no olvidar que pueden haber números negativos), encontrar el subarreglo contiguo de máxima suma, utilizando División y Conquista. Indicar y justificar la complejidad del algoritmo. Ejemplos:
+# (★★★) Dado un arreglo de n enteros (no olvidar que pueden haber números negativos), encontrar el subarreglo contiguo de máxima suma, utilizando División y Conquista. Indicar y justificar la complejidad del algoritmo. Ejemplos:
 
 # [5, 3, 2, 4, -1]  → [5, 3, 2, 4]
 # [5, 3, -5, 4, -1] → [5, 3]

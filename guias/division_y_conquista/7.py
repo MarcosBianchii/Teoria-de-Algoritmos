@@ -1,6 +1,6 @@
 # (★★) Implementar un algoritmo que dados n puntos en un plano, busque la pareja que se encuentre más cercana, por división y conquista, con un orden de complejidad mejor que O(n ^ 2). Justificar el orden del algoritmo mediante el teorema maestro. Se puede asumir que ningún par de puntos tienen la misma coordenada x o y.
 
-from math import inf
+from math import inf, sqrt
 
 
 def puntos_mas_cercanos(puntos):
@@ -14,9 +14,8 @@ def puntos_mas_cercanos(puntos):
     log_b(a) = c -> T(n) = O(n^c logn) = O(nlogn)
     """
     def dist(p0, p1):
-        # No computa la raiz, no es necesaria
         p, q = p0[0] - p1[0], p0[1] - p1[1]
-        return p ** 2 + q ** 2
+        return sqrt(p ** 2 + q ** 2)
 
     def partir_en_lados(ps, xa):
         Qs, Rs = [], []
