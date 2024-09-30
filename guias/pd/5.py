@@ -31,7 +31,7 @@ def laberinto(matriz):
     def construir_solucion(n, m, f):
         sol = []
 
-        # O(min(n, m))
+        # O(n + m)
         while n > 1 and m > 1:
             if f[n - 1][m] > f[n][m - 1]:
                 sol.append("abajo")
