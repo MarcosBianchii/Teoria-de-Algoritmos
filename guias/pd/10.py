@@ -4,8 +4,8 @@ def plan_operativo(L, C, M):
     """
     f(0) = 0
     g(0) = 0
-    f(n) = min(f(n - 1), g(n - 1) + m) + f(n)
-    g(n) = min(g(n - 1), f(n - 1) + m) + g(n)
+    f(n) = min(f(n - 1), g(n - 1) + m) + F[n]
+    g(n) = min(g(n - 1), f(n - 1) + m) + G[n]
 
     La complejidad del algoritmo es O(n)
     """

@@ -55,7 +55,7 @@ class Grafo:
         if w not in self:
             raise KeyError(f"{w} no existe en el grafo")
 
-        if w in self._vs[v]:
+        if w not in self._vs[v]:
             raise KeyError(f"({v}, {w}) no existe en el grafo")
 
         return self._vs[v][w]
