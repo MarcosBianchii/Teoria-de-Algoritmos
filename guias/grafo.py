@@ -1,5 +1,8 @@
 # Implementacion de grafo con la misma interfaz que en RPL.
 
+from copy import deepcopy
+
+
 class Grafo:
     def __init__(self, dirigido=False, vertices_init=[]):
         self._vs = {v: {} for v in vertices_init}
@@ -11,7 +14,7 @@ class Grafo:
 
         self._vs[v] = {}
 
-    def agregar_arista(self, v, w, weight=1):
+    def agregar_arista(self, v, w, peso=1):
         if v not in self:
             raise KeyError(f"{v} no existe en el grafo")
 
@@ -21,15 +24,15 @@ class Grafo:
         if w in self._vs[v]:
             raise KeyError("La arista a agregar ya existe")
 
-        self._vs[v][w] = weight
+        self._vs[v][w] = peso
         if not self._dir:
-            self._vs[w][v] = weight
+            self._vs[w][v] = peso
 
     def borrar_vertice(self, v):
         if v not in self:
             raise KeyError("El vertice a borrar no existe")
 
-        for w in self.adyacents(v):
+        for w in self.adyacentes(v):
             self.borrar_arista(v, w)
 
         del self._vs[v]
@@ -60,13 +63,36 @@ class Grafo:
 
         return self._vs[v][w]
 
+    def estan_unidos(self, v, w):
+        if v not in self:
+            raise KeyError(f"{v} no existe en el grafo")
+
+        if w not in self:
+            raise KeyError(f"{w} no existe en el grafo")
+
+        return w in self._vs[v]
+
+    def cambiar_peso(self, v, w, peso):
+        if v not in self:
+            raise KeyError(f"{v} no existe en el grafo")
+
+        if w not in self:
+            raise KeyError(f"{w} no existe en el grafo")
+
+        self._vs[v][w] = peso
+        if not self._dir:
+            self._vs[w][v] = peso
+
     def adyacentes(self, v):
         if v not in self:
             raise KeyError("El vertice para buscar sus adyacentes no existe")
 
         return list(self._vs[v])
 
-    def vertices(self):
+    def copy(self):
+        return deepcopy(self)
+
+    def obtener_vertices(self):
         return list(self)
 
     def __len__(self):
