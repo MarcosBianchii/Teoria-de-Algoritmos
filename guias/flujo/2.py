@@ -48,7 +48,7 @@ def peso_minimo(residual, p):
 
 def ford_fulkerson(red, s, t):
     """
-    La complejidad del algoritmo es O(v * a^2)
+    La complejidad del algoritmo es O(V * A^2)
     """
     flujos = {(v, w): 0 for v in red for w in red.adyacentes(v)}
     residual = red.copy()
