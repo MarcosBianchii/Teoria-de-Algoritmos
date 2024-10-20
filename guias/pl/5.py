@@ -11,7 +11,7 @@ def min_sat(clausuras):
             if absx not in ys:
                 ys[absx] = LpVariable(str(absx), cat="Binary")
 
-    prob = LpProblem("min SAT", LpMinimize)
+    prob = LpProblem("min_sat", LpMinimize)
     prob += lpSum(ys.values())
 
     # O(n)
