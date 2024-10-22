@@ -5,7 +5,7 @@ def subset_sum(elementos, v):
     f(n, 0) = f(0, v) = 0
     f(n, v) = max(f(n - 1, v), [f(n - 1, v - w[n]) + w[n]] if w[n] <= v else 0)
 
-    La complejidad del algoritmo es O(n * w)
+    La complejidad del algoritmo es O(n * 2^m) donde m es la cantidad de bits de v
     """
     def subset_sum_pd(n, v, w):
         # O(n)

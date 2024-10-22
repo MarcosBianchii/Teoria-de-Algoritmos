@@ -6,7 +6,7 @@ def carlitos(c_publicitaria, P):
     f(n, 0) = f(0, p) = 0
     f(n, p) = max(f(n - 1, p), [f(n - 1, p - c[n]) + g[n]] if c[n] <= p else 0)
 
-    La complejidad del algoritmo es O(n * p)
+    La complejidad del algoritmo es O(n * 2^m) donde m es la cantidad de bits de P
     """
     def carlitos_pd(n, g, c):
         # O(n * p)

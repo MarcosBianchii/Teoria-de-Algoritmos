@@ -6,7 +6,7 @@ def mochila(elementos, W):
     f(0, w) = f(n, 0) = 0
     f(n, w) = max(f(n - 1, w), [f(n - 1, w - p[n]) + v[n]] if p[n] < w else 0)
 
-    La complejidad del algoritmo es O(n * w)
+    La complejidad del algoritmo es O(n * 2^m) donde m es la cantidad de bits de W
     """
     def mochila_pd(n, v, p):
         # O(n * w)

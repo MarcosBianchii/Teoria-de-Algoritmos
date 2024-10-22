@@ -10,7 +10,7 @@ def operaciones(k):
     """
     f(n) = min(f(n // 2) + n % 2, f(n - 1)) + 1
 
-    La complejidad del algoritmo es O(k)
+    La complejidad del algoritmo es O(2^m) donde m es la cantidad de bits de k
     """
     def operaciones_pd(k):
         mem = [0] * (k + 1)

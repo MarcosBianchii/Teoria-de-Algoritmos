@@ -5,7 +5,7 @@ def bodegon_dinamico(P, W):
     f(n, 0) = f(0, w) = 0
     f(n, w) = max(f(n - 1, w), [f(n - 1, w - p[n]) + p[n]] if p[n] < w else 0)
 
-    La complejidad del algoritmo es O(n * w)
+    La complejidad del algoritmo es O(n * 2^m) donde m es la cantidad de bits de W
     """
     def bodegon_pd(n, p):
         # O(n * w)
