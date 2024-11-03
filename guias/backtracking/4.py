@@ -1,33 +1,24 @@
 # (★★) Implementar un algoritmo que dado un Grafo no dirigido nos devuelva un conjunto de vértices que representen un máximo Independent Set del mismo.
 
 def independent_set(grafo):
-    def hay_adyacentes(vs):
-        if not vs:
-            return False
+    vs = grafo.obtener_vertices()
 
-        ultimo = vs[-1]
-        for i in range(len(vs) - 1):
-            v = vs[i]
-            if grafo.estan_unidos(ultimo, v):
-                return True
+    def validar_independent_set(iset, agregado):
+        for v in grafo.adyacentes(agregado):
+            if v in iset:
+                return False
 
-        return False
+        return True
 
-    vertices = grafo.obtener_vertices()
-
-    def independent_set(i, indeps):
-        if hay_adyacentes(indeps):
-            return []
-
+    def bt(i, optimo, iset):
         if i == len(grafo):
-            return indeps.copy()
+            return iset.copy() if len(iset) > len(optimo) else optimo
 
-        indeps.append(vertices[i])
-        con = independent_set(i + 1, indeps)
+        iset.add(vs[i])
+        if validar_independent_set(iset, vs[i]):
+            optimo = bt(i + 1, optimo, iset)
 
-        indeps.pop()
-        sin = independent_set(i + 1, indeps)
+        iset.remove(vs[i])
+        return bt(i + 1, optimo, iset)
 
-        return max(con, sin, key=len)
-
-    return independent_set(0, [])
+    return list(bt(0, set(), set()))

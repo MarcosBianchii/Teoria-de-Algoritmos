@@ -1,50 +1,33 @@
 # (★★) Implementar por backtracking un algoritmo que, dado un grafo no dirigido y un numero n menor a ∣V∣, devuelva si es posible obtener un subconjunto de n vertices tal que ningun par de vertices sea adyacente entre si.
 
 def no_adyacentes(grafo, n):
-    def hay_adyacentes(elegidos):
-        if not elegidos:
-            return False
-
-        ultimo = elegidos[-1]
-        for i in range(len(elegidos) - 1):
-            w = elegidos[i]
-            if grafo.estan_unidos(ultimo, w):
+    def hay_adyacentes(elegidos, agregado):
+        for v in grafo.adyacentes(agregado):
+            if v in elegidos:
                 return True
 
         return False
 
-    vertices = grafo.obtener_vertices()
+    vs = grafo.obtener_vertices()
 
-    def no_adyacentes_rec(i, elegidos):
-        # Tengo algun adyacente
-        if hay_adyacentes(elegidos):
-            return False
-
-        # Consegui los n no adyacentes
+    def bt(i, optimo, elegidos):
         if len(elegidos) == n:
-            return True
+            return elegidos.copy()
 
-        # Me quede sin nuevos vertices
         if i == len(grafo):
-            return False
+            return elegidos.copy() if len(elegidos) > len(optimo) else optimo
 
-        # Ya no llego
         if n > len(elegidos) + len(grafo) - i:
-            return False
+            return optimo
 
-        v = vertices[i]
-        elegidos.append(v)
-        if no_adyacentes_rec(i + 1, elegidos):
-            return True
+        elegidos.add(vs[i])
+        if not hay_adyacentes(elegidos, vs[i]):
+            optimo = bt(i + 1, optimo, elegidos)
+            if len(optimo) == n:
+                return optimo
 
-        elegidos.pop()
-        if no_adyacentes_rec(i + 1, elegidos):
-            return True
+        elegidos.remove(vs[i])
+        return bt(i + 1, optimo, elegidos)
 
-        return False
-
-    elegidos = []
-    if no_adyacentes_rec(0, elegidos):
-        return elegidos
-
-    return None
+    if len(max_is := bt(0, set(), set())) >= n:
+        return list(max_is)

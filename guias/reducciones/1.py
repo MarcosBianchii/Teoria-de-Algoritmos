@@ -10,7 +10,7 @@ def verificador_independent_set(grafo, k, iset):
     """
     La complejidad del verificador es O(V + E)
     """
-    if len(iset) != k:
+    if len(iset) < k:
         return False
 
     # O(V)

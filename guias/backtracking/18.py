@@ -1,7 +1,5 @@
 # (★★★) Implementar un algoritmo que, por backtracking, obtenga la cantidad total de posibles ordenamientos topológicos de un grafo dirigido y acíclico.
 
-from grafo import Grafo
-
 
 def contar_ordenamientos(grafo):
     indegs = {v: 0 for v in grafo}
@@ -9,7 +7,7 @@ def contar_ordenamientos(grafo):
         for w in grafo.adyacentes(v):
             indegs[w] += 1
 
-    def count_topo_sort(grado0):
+    def contar_topos(grado0):
         if not grado0:
             return 1
 
@@ -21,7 +19,7 @@ def contar_ordenamientos(grafo):
                 if indegs[w] == 0:
                     grado0.add(w)
 
-            cantidad += count_topo_sort(grado0)
+            cantidad += contar_topos(grado0)
 
             grado0.add(v)
             for w in grafo.adyacentes(v):
@@ -32,12 +30,4 @@ def contar_ordenamientos(grafo):
         return cantidad
 
     grado0 = set(v for v, d in indegs.items() if d == 0)
-    return count_topo_sort(grado0)
-
-
-if __name__ == "__main__":
-    grafo = Grafo(True, ["A", "B", "C", "D"])
-    grafo.agregar_arista("A", "C")
-    grafo.agregar_arista("B", "C")
-    grafo.agregar_arista("B", "D")
-    print(contar_ordenamientos(grafo))
+    return contar_topos(grado0)

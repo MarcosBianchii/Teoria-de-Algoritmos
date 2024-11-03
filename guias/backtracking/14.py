@@ -1,31 +1,29 @@
 # (★★★) Un set dominante(Dominating Set) de un grafo G es un subconjunto D de vértices de G, tal que para todo vértice de G: o bien(i) pertenece a D o bien(ii) es adyacente a un vértice en D. Implementar un algoritmo que reciba un Grafo, y devuelva un dominating set de dicho grafo con la mínima cantidad de vértices.
 
-def dominating_set_min(grafo):
-    vertices = grafo.obtener_vertices()
+def dominating_set(grafo):
+    vs = grafo.obtener_vertices()
 
-    def es_dominating_set(conjunto):
-        vs = set(conjunto)
+    def validar_dominating_set(ds, quitado):
+        dominado = False
+        for w in grafo.adyacentes(quitado):
+            if w in ds:
+                dominado = True
+                continue
 
-        for v in conjunto:
-            for w in grafo.adyacentes(v):
-                vs.add(w)
+            if all(u not in ds for u in grafo.adyacentes(w)):
+                return False
 
-        return len(vs) == len(grafo)
+        return dominado
 
-    def calcular_min_set(i, min_set):
-        if es_dominating_set(min_set):
-            return min_set.copy()
-
+    def bt(i, optimo, ds):
         if i == len(grafo):
-            return []
+            return ds.copy() if len(ds) < len(optimo) else optimo
 
-        v = vertices[i]
-        min_set.append(v)
-        con = calcular_min_set(i + 1, min_set)
+        ds.remove(vs[i])
+        if validar_dominating_set(ds, vs[i]):
+            optimo = bt(i + 1, optimo, ds)
 
-        min_set.pop()
-        sin = calcular_min_set(i + 1, min_set)
+        ds.add(vs[i])
+        return bt(i + 1, optimo, ds)
 
-        return min(con, sin, key=len)
-
-    return calcular_min_set(0, [])
+    return list(bt(0, set(vs), set(vs)))

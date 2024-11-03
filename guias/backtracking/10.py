@@ -4,21 +4,20 @@ def sumatoria_dados(n, s):
     """
     La complejidad temporal del algoritmo es O(2^n)
     """
-    resultados = []
-
-    def sumas(dados, suma):
+    def sumas(resultados, dados, suma):
         if len(dados) == n and suma == s:
             resultados.append(dados.copy())
-            return
+            return resultados
 
         if suma + 6 * (n - len(dados)) < s:
-            return
+            return resultados
 
         tope = min(6, s - suma) + 1
         for i in range(1, tope):
             dados.append(i)
-            sumas(dados, suma + i)
+            sumas(resultados, dados, suma + i)
             dados.pop()
 
-    sumas([], 0)
-    return resultados
+        return resultados
+
+    return sumas([], [], 0)

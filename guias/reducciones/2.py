@@ -10,7 +10,7 @@ def verificador_vertex_cover(grafo, k, vcover):
     """
     La complejidad del verificador es O(V + E)
     """
-    if len(vcover) != k:
+    if len(vcover) > k:
         return False
 
     # O(V)

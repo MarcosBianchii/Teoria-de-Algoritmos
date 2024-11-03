@@ -33,7 +33,7 @@ def verificador_arreglo_ordenado(arr):
 
 # c. Dadas un arreglo de posiciones de Reinas, si es la solución de colocar al menos N-reinas en un tablero NxN.
 
-def verificador_n_reinas(reinas, n):
+def verificador_n_reinas(n, reinas):
     """
     La complejidad del verificador es O(n^2)
     """

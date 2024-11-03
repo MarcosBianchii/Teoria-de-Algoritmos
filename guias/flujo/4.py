@@ -1,13 +1,14 @@
 # (★) Dada una red residual, dar un algoritmo que encuentre un camino de aumento que minimice el número de aristas utilizadas.
 
 from collections import deque
+from ..grafo import Grafo
 
 
-def construir_camino(padres, t):
-    camino = [t]
+def construir_camino(padres, fin):
+    camino = [fin]
 
     # O(v)
-    while (padre := padres.get(camino[-1])) is not None:
+    while (padre := padres[camino[-1]]) is not None:
         camino.append(padre)
 
     # O(v)
@@ -15,9 +16,9 @@ def construir_camino(padres, t):
     return camino
 
 
-def encontrar_camino(red, s, t):
+def encontrar_camino(red: Grafo, s, t):
+    padres = {s: None}
     q = deque([s])
-    padres = {}
 
     # O(v + a)
     while q:
