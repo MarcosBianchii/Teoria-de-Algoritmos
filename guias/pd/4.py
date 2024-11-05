@@ -3,6 +3,7 @@
 def juan_el_vago(trabajos):
     """
     f(0) = 0
+    f(1) = v[1]
     f(n) = max(f(n - 1), f(n - 2) + v[n])
 
     La complejidad del algoritmo es O(n)
@@ -10,10 +11,11 @@ def juan_el_vago(trabajos):
     def juan_el_vago_pd(n, v):
         # O(n)
         mem = [0] * (n + 1)
+        mem[1] = v[1]
 
         # O(n)
-        for i in range(1, n + 1):
-            mem[i] = max(mem[i - 1], (mem[i - 2] or 0) + v[i])
+        for i in range(2, n + 1):
+            mem[i] = max(mem[i - 1], (mem[i - 2]) + v[i])
 
         return mem
 

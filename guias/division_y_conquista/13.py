@@ -60,7 +60,7 @@ def max_subarray(arr):
     log_b(a) = c -> T(n) = O(n^c logn) = O(nlogn)
     """
     def suma(a, b):
-        return sum(map(lambda i: arr[i], range(a, b)))
+        return sum(arr[i] for i in range(a, b))
 
     def expandir_suma(start, end, step):
         suma_parcial = 0

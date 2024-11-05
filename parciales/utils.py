@@ -31,8 +31,28 @@ def encontrar_camino(red, s, t):
                 q.append(w)
 
 
-def peso_minimo(red, p):
-    return min(red.peso_arista(p[i - 1], p[i]) for i in range(1, len(p)))
+def peso_minimo(residual, p):
+    return min(residual.peso_arista(p[i - 1], p[i]) for i in range(1, len(p)))
+
+
+def aristas_de_corte(red, residual, s):
+    visitados = set([s])
+    stack = [s]
+
+    while stack:
+        v = s.pop()
+        for w in residual.adyacentes(v):
+            if w not in visitados:
+                visitados.add(w)
+                stack.append(w)
+
+    corte = set()
+    for v in visitados:
+        for w in red.adyacentes(v):
+            if w not in visitados:
+                corte.add((v, w))
+
+    return corte
 
 
 def actualizar_grafo_residual(residual, v, w, valor):

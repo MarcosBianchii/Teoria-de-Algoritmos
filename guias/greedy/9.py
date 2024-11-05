@@ -16,7 +16,7 @@ def minimizar_latencia(L_deadline, T_tareas):
     La complejidad del algoritmo es O(nlogn)
     """
     # O(nlogn)
-    tareas = sorted((dl, dur) for dl, dur in zip(L_deadline, T_tareas))
+    tareas = sorted(zip(L_deadline, T_tareas))
 
     S_i = 0
     # O(n)
