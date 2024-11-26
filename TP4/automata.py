@@ -1,7 +1,7 @@
 class Automata:
     def __init__(self):
         self._qs = {}
-        self._q = None
+        self._inicial = None
         self._final = set()
 
     def estado(self, nombre, es_inicial=False, es_final=False):
@@ -10,7 +10,7 @@ class Automata:
 
         self._qs[nombre] = {}
         if es_inicial:
-            self._q = nombre
+            self._inicial = nombre
         if es_final:
             self._final.add(nombre)
 
@@ -21,16 +21,17 @@ class Automata:
         self._qs[nombre1][simbolo] = nombre2
 
     def ejectuar(self, string):
-        if self._q is None:
+        if self._inicial is None:
             raise ValueError("No hay ningún estado inicial")
 
         if len(self._final) < 0:
             raise ValueError("No hay ningún estado final")
 
+        q = self._inicial
         for x in string:
-            if x not in self._qs[self._q]:
+            if x not in self._qs[q]:
                 return False
 
-            self._q = self._qs[self._q][x]
+            q = self._qs[q][x]
 
-        return self._q in self._final
+        return q in self._final
