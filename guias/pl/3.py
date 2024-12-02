@@ -6,12 +6,12 @@ from pulp import LpProblem, LpVariable, LpMinimize, value, lpSum
 def vertex_cover_min(grafo):
     ys = {v: LpVariable(str(v), cat="Binary") for v in grafo}
 
-    problem = LpProblem("vertex_cover_min", LpMinimize)
-    problem += lpSum(ys.values())
+    prob = LpProblem("vertex_cover_min", LpMinimize)
+    prob += lpSum(ys.values())
 
     for v in grafo:
         ady = grafo.adyacentes(v)
-        problem += ys[v] + lpSum(ys[w] for w in ady) >= len(ady) * (1 - ys[v])
+        prob += (1 - ys[v]) * len(ady) <= lpSum(ys[w] for w in ady)
 
-    problem.solve()
+    prob.solve()
     return [v for v, y in ys.items() if value(y)]
