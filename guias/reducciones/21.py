@@ -2,17 +2,16 @@
 
 def verificador_independent_set(grafo, k, iset):
     """
-    La complejidad del verificador es O(i + e') donde e' es la cantidad de
-    aristas adyacentes a los vértices dentro del independent set dado.
+    La complejidad del verificador es O(S + E)
     """
     if len(iset) < k:
         return False
 
-    # O(i)
+    # O(S)
     if any(v not in grafo for v in iset):
         return False
 
-    # O(i + e')
+    # O(S + E)
     if any(w in iset for v in iset for w in grafo.adyacentes(v)):
         return False
 

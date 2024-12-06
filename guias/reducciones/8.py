@@ -2,10 +2,10 @@
 
 """
 Problema de decisión del Camino Hamiltoniano:
-Dado un grafo, determinar si existe un camino tal que pase por cada vértice una sola vez.
+Dado un grafo, determinar si existe un camino tal que pase una sola vez por cada vértice.
 
 Problema de decisión del Ciclo Hamiltoniano:
-Dado un grafo, determinar si existe un ciclo tal quepase por cada vértice una sola vez.
+Dado un grafo, determinar si existe un ciclo tal quepase una sola vez por cada vértice.
 """
 
 

@@ -2,7 +2,7 @@
 
 """
 El problema de decisión del Independent Set es:
-Dado un grafo no dirigido y un valor entero `k`, evaluar si es posible obtener por lo menos un subconjunto de `k` vértices tal que ningún vértice dentro de él sea adyacente a otro dentro del subconjunto.
+Dado un grafo no dirigido y un valor entero `k`, evaluar si es posible obtener un subconjunto S de a lo sumo `k` vértices tal que ningún vértice dentro del subconjunto sea adyacente a otro dentro de S.
 """
 
 
@@ -17,17 +17,10 @@ def verificador_independent_set(grafo, k, iset):
     if any(v not in grafo for v in iset):
         return False
 
-    # O(V + E)
+    # O(S + E)
     for v in iset:
         for w in grafo.adyacentes(v):
             if w in iset:
                 return False
-
-    # O(V)
-    conteo = {}
-    for v in iset:
-        conteo[v] = conteo.get(v, 0) + 1
-        if conteo[v] < 1:
-            return False
 
     return True

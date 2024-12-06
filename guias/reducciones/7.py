@@ -2,12 +2,12 @@
 
 """
 Problema de decisión del Independent Set:
-Dado un grafo y un número entero `k`, determinar si existe un subconjunto de vértices no adyacentes entre ellos de tamaño k.
+Dado un grafo y un número entero `k`, determinar si existe un subconjunto de vértices no adyacentes entre ellos de a lo sumo tamaño k.
 
 Problema de decisión del K-Clique:
 Dado un grafo y un número entero `k`, determinar si existe un subgrafo k-completo dentro del grafo original.
 
-Para determinar que K-Clique es NP-Completo, hay que probar que está en NP y podemos por ejemplo intentar reducir Independent Set a K-Clique, si lo logramos entonces es NP-Completo.
+Para determinar que K-Clique es NP-Completo, hay que probar que está en NP y podemos por ejemplo intentar reducir Independent Set a K-Clique, si lo logramos entonces K-Clique es NP-Completo.
 """
 
 

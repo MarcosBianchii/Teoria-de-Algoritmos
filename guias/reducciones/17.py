@@ -4,10 +4,10 @@
 El problema de Aragorn es basicamente el problema de Vertex Cover, donde cada esquina representa un vértice en un grafo y las calles son sus aristas. El conjunto de cubrimiento representa donde sí y donde no hay que posicionar a los guardianes para cubrir todas las calles.
 
 Problema de decisión de Vertex Cover:
-Dado un grafo y un número entero `k`, determinar si es posible obtener un subconjunto de vértices tales que para todas las aristas del grafo algúno de sus extremos esté en este conjunto.
+Dado un grafo y un número entero `k`, determinar si es posible obtener un subconjunto de por lo menos k vértices tales que para todas las aristas del grafo algúno de sus extremos esté en este conjunto.
 
 Problema de decisión del problema de Aragorn:
-Dado el mapa (en forma de diccionarios) de una ciudad de Gondor y un número entero `k`, determinar si es posible cubrir todas las calles del reino utilizando a lo sumo k guardianes.
+Dado el mapa (en forma de diccionarios) de una ciudad de Gondor y un número entero `k`, determinar si es posible cubrir todas las calles del reino utilizando por lo menos k guardianes.
 """
 
 

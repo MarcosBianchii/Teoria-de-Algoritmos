@@ -2,7 +2,7 @@
 
 """
 El problema de decisión del Vertex Cover se define como:
-Dado un grafo no dirigido y un valor entero `k`, evaluar si es posible obtener por lo menos un subconjunto de `k` vértices tal que todas las aristas del grafo tengan por lo menos alguno de sus vértices extremos dentro del subconjunto.
+Dado un grafo no dirigido y un valor entero `k`, evaluar si es posible obtener un subconjunto C de por lo menos `k` vértices tal que todas las aristas del grafo tengan por lo menos alguno de sus vértices extremos dentro de C.
 """
 
 
@@ -22,12 +22,5 @@ def verificador_vertex_cover(grafo, k, vcover):
         for w in grafo.adyacentes(v):
             if v not in vcover and w not in vcover:
                 return False
-
-    # O(V)
-    conteo = {}
-    for v in vcover:
-        conteo[v] = conteo.get(v, 0) + 1
-        if conteo[v] > 1:
-            return False
 
     return True

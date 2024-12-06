@@ -4,10 +4,10 @@
 
 """
 Problema de decisión del Hitting-Set Problem:
-Dado un conjunto de n elementos A, m subconjuntos de A B_i, y un número entero `k`, determinar si existe un subconjunto C incluído en A de a lo sumo k elementos tal que C contenga al menos 1 elemento de cada B_i.
+Dado un conjunto de n elementos A, m subconjuntos de A B_i, y un número entero `k`, determinar si existe un subconjunto C incluído en A de por lo menos k elementos tal que C contenga al menos 1 elemento de cada B_i.
 
 Propongo el problema NP-Completo Vertex Cover, su problema de decisión es:
-Dado un grafo y un número entero `k`, determinar si existe un subconjunto de k vértices tales que para toda arista del grafo, alguno de sus extremos sea parte del subconjunto.
+Dado un grafo y un número entero `k`, determinar si existe un subconjunto de por lo menos k vértices tales que para toda arista del grafo, alguno de sus extremos sea parte del subconjunto.
 """
 
 

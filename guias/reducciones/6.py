@@ -2,7 +2,7 @@
 
 """
 El problema de decisión de N-Reinas es:
-Dado un tablero de NxN, determinar si es posible posicionar N reinas de forma tal que ninguna amenaze a otra siguiendo las reglas del ajedrez donde una reina puede comer en cualquier dirección.
+Dado un tablero de NxN, determinar si es posible posicionar exactamente N reinas de forma tal que ninguna amenaze a otra siguiendo las reglas del ajedrez donde una reina puede comer en cualquier dirección.
 
 Para demostrar que Independent Set es NP-Completo podemos demostrar que N-Reinas es reducible a Independent Set, de esta forma demostrariamos que N-Reinas es a lo sumo tán dificil como Independent Set e Independent Set es por lo menos tán dificil como resolver N-Reinas, como N-Reinas es NP-Completo, estaríamos demostrando que Independent Set también lo es. No hace falta demostrar que N-Reinas está en NP, está el verificador eficiente en 5.py.
 

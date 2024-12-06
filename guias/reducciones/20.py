@@ -11,7 +11,7 @@ Dado un grafo y un número entero `k`, determinar si es posible obtener un subco
 
 def verificador_path_selection(grafo, pedidos, k, elegidos):
     """
-    La complejidad del algoritmo es O(l * e^2) donde l es el largo del camino más largo.
+    La complejidad del algoritmo es O(l * e^2).
     """
     if len(elegidos) < k:
         return False
@@ -39,11 +39,11 @@ Como la complejidad del verificador es polinómica, Path Selection está en NP.
         # transformacion
         return path_selection(grafo, pedidos, k)
 
-Creamos un nuevo grafo con los mismos vértices, por cada arista del grafo original creamos un nuevo vértice y los unimos con sus vértices correspondientes mediante un par de arcos antiparalelos. Para el conjunto de caminos pedidos vamos a, por cada vértice `v` crear un camino donde por cada adyacente vayamos y volvamos de forma que quede algo por el estilo de: [v, v-u, v, v-w, v, ..., v], notar que las aristas del grafo original no forman parte de este grafo.
+Creamos un grafo donde por cada arista del grafo original, existe un vértice que la represente en el grafo modelo, vamos a conectar a todos los vértices con todos. Para el conjuntos de caminos pedidos vamos a, por cada vértice del grafo original, crear un camino que pase por todos sus vértices arista que sean adyacentes a él.
 
 IS => PS:
-Teniendo en cuenta que el conjunto de caminos pedidos tiene V elementos y necesitamos k disjuntos, es muy parecido a Independent Set. Si tenemos un Independent Set de tamaño k en el grafo original, los caminos que recibe Path Selection son de ida y vuelta, por cada vértice tenemos un solo camino que lo integra y a su vez a todos los vértices arista que creamos que conectan con este vértice, por lo que esto garantiza que son caminos posibles pero a su vez contiene a los vértices arista que otros vértices originales también tienen en sus respectivos caminos sii son adyacentes en el grafo original. Si existen caminos disjuntos entonces van a diferir en estos vértices arista, estos vértices arista representan aristas en el grafo original, por lo que para que sean disjuntos 2 caminos los vértices responsables del ambos caminos no pueden ser adyacentes en el grafo original, pero nosotros ya sabemos que podemos conseguir k de ellos que no lo sean, entonces representando a los vértices como caminos podemos conseguir k disjuntos.
+Teniendo en cuenta que existe un Independent Set de a lo sumo tamaño k en el grafo original. Esto significa que hay k caminos pedidos disjuntos. Esto es porque dos caminos son disjuntos sii sus respectivos vértices no son adyacentes, pues, si lo fueran, ambos compartirían al vértice arista que los conectan en sus caminos. Entonces se dá Path Selection de a lo sumo k caminos.
 
 PS => IS:
-Teniendo k caminos disjuntos podríamos obtener al representante de cada uno que es el único vértice dentro de cada camino que es original (que no es vértice arista). Como ya sabemos que tenemos k disjuntos, tenemos k vértices representantes que no aparecen en los caminos de los demás, pero, solo pueden ser disjuntos si no tienen vértices arista entre ellos, osea ser adyacentes, entonces tenemos k vértices independientes.
+Teniendo k caminos disjuntos, esto significa que de cada camino podemos contar a su vértice representante del grafo original. Como son disjuntos los caminos, estos vértices son independientes, pues no hay otro vértice representante que comparta ninguna de sus aristas adyacentes. 
 """

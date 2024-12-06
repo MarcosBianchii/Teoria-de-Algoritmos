@@ -14,11 +14,11 @@ def verificador_mochila(elementos, v, w, mochila):
     La complejidad del verificador es O(n)
     """
     # O(n)
-    if sum(x[0] for x in mochila) > w:
+    if sum(x[0] for x in mochila) < v:
         return False
 
     # O(n)
-    if sum(x[1] for x in mochila) < v:
+    if sum(x[1] for x in mochila) > w:
         return False
 
     # O(n)

@@ -5,7 +5,7 @@ El problema de decisión de Carlitos es:
 Dados los valores de distintas figuritas, un monto `w` al que llegar y un número entero `k`, determinar si existe alguna combinación de a lo sumo k valores de figuritas tales que sumados sea igual a w.
 
 El problema de decisión de Subset Sum es:
-Dado un arreglo de números y un número entero `w`, determinar si es posible mediante alguna combinación de los números en el arreglo obtener una suma de w.
+Dado un arreglo de números y un número entero `w`, determinar si es posible mediante alguna combinación de los números en el arreglo obtener una suma de exactamente w.
 """
 
 
